@@ -198,3 +198,45 @@ function showLoginAlert() {
 
 if (loginBtnTop) loginBtnTop.addEventListener("click", showLoginAlert);
 if (bottomBtn) bottomBtn.addEventListener("click", showLoginAlert);
+const firebaseConfig = {
+  apiKey: "AIzaSyC0Nu8X02_kRexIMpPmtrSrYGiGSg1OXeE",
+  authDomain: "book-my-doctor-1342f.firebaseapp.com",
+  projectId: "book-my-doctor-1342f",
+  storageBucket: "book-my-doctor-1342f.appspot.com",
+  messagingSenderId: "806110129864",
+  appId: "1:806110129864:web:9151b91c9e007e33cb7ffd"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+function openLogin() {
+  document.getElementById("loginPopup").style.display = "block";
+}
+function closeLogin() {
+  document.getElementById("loginPopup").style.display = "none";
+}
+
+function loginUser() {
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(() => {
+      alert("✅ Login Ho Gaya");
+      closeLogin();
+    })
+    .catch(err => alert(err.message));
+}
+
+function signupUser() {
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("password").value;
+
+  auth.createUserWithEmailAndPassword(email, pass)
+    .then(() => {
+      alert("✅ Account Ban Gaya");
+      closeLogin();
+    })
+    .catch(err => alert(err.message));
+}
