@@ -146,14 +146,29 @@ function renderDoctors(list) {
       </div>
     `;
 
+    // ✅ POORI CARD CLICK → DETAILS POPUP
+    card.addEventListener("click", () => {
+      alert(
+        `${doc.name}\n` +
+        `${doc.specialty}\n` +
+        `Experience: ${doc.years}\n` +
+        `${doc.hospital}, ${doc.city}\n` +
+        `Fee: ${doc.fee}\n` +
+        `Time: ${doc.slot}`
+      );
+    });
+
+    // ✅ SIRF BOOK BUTTON → WHATSAPP
     const bookBtn = card.querySelector(".book-btn");
-    bookBtn.addEventListener("click", () => {
+    bookBtn.addEventListener("click", (event) => {
+      event.stopPropagation(); // alert ko roke
       const url = getWhatsAppLink(doc);
       window.location.href = url;
     });
 
     doctorList.appendChild(card);
   });
+}
 }
 
 // initial load
