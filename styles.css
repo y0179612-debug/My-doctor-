@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+}
+
+header {
+  background: #0d6efd;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+header button {
+  background: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 15px;
+  background: linear-gradient(to right, #0d6efd, #6610f2);
+  color: white;
+}
+
+.hero input {
+  padding: 10px;
+  width: 70%;
+  max-width: 300px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background: #ffc107;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.doctors {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.doctor-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.doctor-card h3 {
+  margin: 0;
+  color: #0d6efd;
+}
+
+footer {
+  background: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 30px;
+}
