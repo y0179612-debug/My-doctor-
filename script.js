@@ -80,7 +80,7 @@ const doctors = [
     image: "https://images.pexels.com/photos/8376234/pexels-photo-8376234.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    name: "Dr. Manish Gupta",
+    name: "Dr. Prashant Gupta",
     specialty: "General Physician",
     years: "15+ Years",
     hospital: "Family Health Clinic",
