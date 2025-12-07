@@ -200,17 +200,48 @@ function searchDoctor() {
   renderDoctors(filtered);
 }
 
-// Login buttons (sirf alert)
+// ----- Simple front-end login (naam save + UI change) -----
+
 const loginBtnTop = document.getElementById("loginBtn");
 const bottomBar = document.getElementById("bottomLoginBar");
 const bottomBtn = bottomBar ? bottomBar.querySelector(".bottom-login-btn") : null;
 
-function showLoginAlert() {
-  alert("Login / Sign Up backend baad mein add hoga. Abhi yeh demo UI hai 🙂");
+// UI update helper
+function updateLoggedInUI(name) {
+  if (loginBtnTop) {
+    loginBtnTop.textContent = name ? `Hi, ${name}` : "Login / Sign Up";
+  }
+  if (bottomBtn) {
+    bottomBtn.textContent = name ? "My Appointments" : "Login / Sign Up";
+  }
 }
 
-if (loginBtnTop) loginBtnTop.addEventListener("click", showLoginAlert);
-if (bottomBtn) bottomBtn.addEventListener("click", showLoginAlert);
+// Login handler
+function handleLoginClick() {
+  const name = prompt("Enter your name to continue:");
+  if (!name) return;
 
+  // simple “login” – naam save karo
+  localStorage.setItem("bmd_user_name", name.trim());
+  updateLoggedInUI(name.trim());
+  alert("Logged in as " + name);
+}
+
+// Logout (agar kabhi future me chahiye)
+function logout() {
+  localStorage.removeItem("bmd_user_name");
+  updateLoggedInUI(null);
+  alert("You have been logged out.");
+}
+
+// Buttons par click events lagao
+if (loginBtnTop) loginBtnTop.addEventListener("click", handleLoginClick);
+if (bottomBtn) bottomBtn.addEventListener("click", handleLoginClick);
+
+// Page load par check karo ki user pehle se “logged in” hai ya nahi
+const savedName = localStorage.getItem("bmd_user_name");
+if (savedName) {
+  updateLoggedInUI(savedName);
+}
 // Agar HTML onclick="searchDoctor()" use kar rahi ho to ye line optional hai
 window.searchDoctor = searchDoctor;
