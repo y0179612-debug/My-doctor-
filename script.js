@@ -193,7 +193,7 @@ const bottomBar = document.getElementById("bottomLoginBar");
 const bottomBtn = bottomBar.querySelector(".bottom-login-btn");
 
 function showLoginAlert() {
-  alert("Login / Sign Up will be added later. This is a UI demo right now.");
+  openLogin(); // ab real login popup khulega
 }
 
 if (loginBtnTop) loginBtnTop.addEventListener("click", showLoginAlert);
