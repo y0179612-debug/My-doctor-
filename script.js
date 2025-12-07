@@ -1,5 +1,5 @@
 // ←←← yaha apna WhatsApp number daalo, 91 ke sath
-const WHATSAPP_NUMBER = "91 7309802544"; // example: 919876543210
+const WHATSAPP_NUMBER = "91xxxxxxxxxx"; // example: 917309802544
 
 // Doctors data (zyada doctors => lamba page)
 const doctors = [
@@ -101,6 +101,14 @@ function getWhatsAppLink(doc) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
+// Normalize text for better search (dr. rahul = dr rahul = rahul)
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .replace(/\./g, "")   // dot hatao
+    .replace(/\s+/g, ""); // saare spaces hatao
+}
+
 // Card render
 function renderDoctors(list) {
   doctorList.innerHTML = "";
@@ -151,16 +159,30 @@ function renderDoctors(list) {
 // Pehli baar sab doctors dikhado
 renderDoctors(doctors);
 
-// Search function (Search button se call hota hai)
+// Search function
 function searchDoctor() {
-  const value = document.getElementById("searchBox").value.toLowerCase();
+  const raw = document.getElementById("searchBox").value || "";
+  const value = normalizeText(raw);
 
-  const filtered = doctors.filter((doc) =>
-    doc.name.toLowerCase().includes(value) ||
-    doc.city.toLowerCase().includes(value) ||
-    doc.specialty.toLowerCase().includes(value) ||
-    doc.hospital.toLowerCase().includes(value)
-  );
+  if (!value) {
+    // empty search => sab dikhado
+    renderDoctors(doctors);
+    return;
+  }
+
+  const filtered = doctors.filter((doc) => {
+    const name = normalizeText(doc.name);
+    const city = normalizeText(doc.city);
+    const spec = normalizeText(doc.specialty);
+    const hosp = normalizeText(doc.hospital);
+
+    return (
+      name.includes(value) ||
+      city.includes(value) ||
+      spec.includes(value) ||
+      hosp.includes(value)
+    );
+  });
 
   renderDoctors(filtered);
 }
