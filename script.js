@@ -1,6 +1,5 @@
 // ←←← yaha apna WhatsApp number daalo, 91 ke sath
-const WHATSAPP_NUMBER = "91xxxxxxxxxx"; // example: 917309802544
-
+const WHATSAPP_NUMBER = "917309802544";
 // Doctors data (zyada doctors => lamba page)
 const doctors = [
   {
