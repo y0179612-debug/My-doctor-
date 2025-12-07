@@ -1,4 +1,7 @@
-// Dummy doctors data with images
+// ←←← yaha apna WhatsApp number daalo, 91 ke sath
+const WHATSAPP_NUMBER = "91 7309802544"; // example: 919876543210
+
+// Doctors data (zyada doctors => lamba page)
 const doctors = [
   {
     name: "Dr. Vinita Das",
@@ -32,10 +35,71 @@ const doctors = [
     slot: "10:00 AM – 01:00 PM",
     ratingTag: "POPULAR",
     image: "https://images.pexels.com/photos/8413295/pexels-photo-8413295.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Dr. Aman Verma",
+    specialty: "Orthopedics",
+    years: "12+ Years",
+    hospital: "AIIMS",
+    city: "Varanasi",
+    fee: "₹600 Consultation Fee",
+    slot: "02:00 PM – 06:00 PM",
+    ratingTag: "TOP RATED",
+    image: "https://images.pexels.com/photos/3825529/pexels-photo-3825529.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Dr. Pooja Yadav",
+    specialty: "Pediatrics",
+    years: "8+ Years",
+    hospital: "City Care Hospital",
+    city: "Patna",
+    fee: "₹350 Consultation Fee",
+    slot: "09:00 AM – 12:00 PM",
+    ratingTag: "KIDS SPECIALIST",
+    image: "https://images.pexels.com/photos/6129682/pexels-photo-6129682.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Dr. Sameer Khan",
+    specialty: "Neurology",
+    years: "18+ Years",
+    hospital: "Neuro Plus",
+    city: "Noida",
+    fee: "₹900 Consultation Fee",
+    slot: "06:00 PM – 09:00 PM",
+    ratingTag: "PREMIUM",
+    image: "https://images.pexels.com/photos/8460120/pexels-photo-8460120.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Dr. Rita Sharma",
+    specialty: "ENT",
+    years: "9+ Years",
+    hospital: "Sharda Hospital",
+    city: "Ghaziabad",
+    fee: "₹450 Consultation Fee",
+    slot: "03:00 PM – 07:00 PM",
+    ratingTag: "POPULAR",
+    image: "https://images.pexels.com/photos/8376234/pexels-photo-8376234.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Dr. Manish Gupta",
+    specialty: "General Physician",
+    years: "15+ Years",
+    hospital: "Family Health Clinic",
+    city: "Gurugram",
+    fee: "₹300 Consultation Fee",
+    slot: "08:00 AM – 11:00 AM",
+    ratingTag: "FAMILY DOCTOR",
+    image: "https://images.pexels.com/photos/4269366/pexels-photo-4269366.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 
 const doctorList = document.getElementById("doctorList");
+
+// WhatsApp booking link
+function getWhatsAppLink(doc) {
+  const msg = `Hello, I want to book an appointment with ${doc.name} (${doc.specialty}) at ${doc.hospital}, ${doc.city}. Fee: ${doc.fee}. Time slot: ${doc.slot}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
 
 // Card render
 function renderDoctors(list) {
@@ -76,16 +140,18 @@ function renderDoctors(list) {
 
     const bookBtn = card.querySelector(".book-btn");
     bookBtn.addEventListener("click", () => {
-      alert(`Demo booking created for ${doc.name}. (Frontend only)`);
+      const url = getWhatsAppLink(doc);
+      window.location.href = url; // WhatsApp open
     });
 
     doctorList.appendChild(card);
   });
 }
 
+// Pehli baar sab doctors dikhado
 renderDoctors(doctors);
 
-// Search function (called from HTML button)
+// Search function (Search button se call hota hai)
 function searchDoctor() {
   const value = document.getElementById("searchBox").value.toLowerCase();
 
@@ -99,13 +165,13 @@ function searchDoctor() {
   renderDoctors(filtered);
 }
 
-// Login button actions
+// Login buttons
 const loginBtnTop = document.getElementById("loginBtn");
 const bottomBar = document.getElementById("bottomLoginBar");
 const bottomBtn = bottomBar.querySelector(".bottom-login-btn");
 
 function showLoginAlert() {
-  alert("Login / Sign Up feature will be added later. This is a UI demo for now.");
+  alert("Login / Sign Up will be added later. This is a UI demo right now.");
 }
 
 if (loginBtnTop) loginBtnTop.addEventListener("click", showLoginAlert);
