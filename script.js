@@ -1,7 +1,7 @@
-// ←←← yaha apna WhatsApp number daalo, 91 ke sath
-const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // example: 917309802544
+// ← Yaha apna WhatsApp number daalo (91 ke saath)
+const WHATSAPP_NUMBER = "917309802544"; // example
 
-// Doctors data (zyada doctors => lamba page)
+// Local doctors data – abhi isi se cards aayenge
 const doctors = [
   {
     name: "Dr. Vinita Das",
@@ -103,13 +103,13 @@ function getWhatsAppLink(doc) {
 
 // Normalize text for better search
 function normalizeText(text) {
-  return text
+  return (text || "")
     .toLowerCase()
     .replace(/\./g, "")
     .replace(/\s+/g, "");
 }
 
-// Card render
+// Doctor cards render + detail popup + WhatsApp
 function renderDoctors(list) {
   doctorList.innerHTML = "";
 
@@ -146,7 +146,7 @@ function renderDoctors(list) {
       </div>
     `;
 
-    // ✅ POORI CARD CLICK → DETAILS POPUP
+    // Poora card → doctor ka detail
     card.addEventListener("click", () => {
       alert(
         `${doc.name}\n` +
@@ -158,10 +158,10 @@ function renderDoctors(list) {
       );
     });
 
-    // ✅ SIRF BOOK BUTTON → WHATSAPP
+    // Sirf button → WhatsApp
     const bookBtn = card.querySelector(".book-btn");
     bookBtn.addEventListener("click", (event) => {
-      event.stopPropagation(); // alert ko roke
+      event.stopPropagation(); // card ke alert ko rokne ke liye
       const url = getWhatsAppLink(doc);
       window.location.href = url;
     });
@@ -169,12 +169,11 @@ function renderDoctors(list) {
     doctorList.appendChild(card);
   });
 }
-}
 
-// initial load
+// Initial load
 renderDoctors(doctors);
 
-// Search function
+// Search
 function searchDoctor() {
   const raw = document.getElementById("searchBox").value || "";
   const value = normalizeText(raw);
@@ -207,8 +206,11 @@ const bottomBar = document.getElementById("bottomLoginBar");
 const bottomBtn = bottomBar ? bottomBar.querySelector(".bottom-login-btn") : null;
 
 function showLoginAlert() {
-  alert("Login / Sign Up abhi demo hai. Baad me real backend se connect karenge.");
+  alert("Login / Sign Up backend baad mein add hoga. Abhi yeh demo UI hai 🙂");
 }
 
 if (loginBtnTop) loginBtnTop.addEventListener("click", showLoginAlert);
 if (bottomBtn) bottomBtn.addEventListener("click", showLoginAlert);
+
+// Agar HTML onclick="searchDoctor()" use kar rahi ho to ye line optional hai
+window.searchDoctor = searchDoctor;
