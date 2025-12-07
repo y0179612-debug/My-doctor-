@@ -2,28 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Doctor Booking</title>
+  <title>BookMyDoctor | My Doctor Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <header>
-    <h1>My Doctor Booking</h1>
-    <button id="loginBtn">Login</button>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <span class="logo-icon">👨‍⚕️</span>
+      <span class="logo-text">BookMyDoctor</span>
+    </div>
+    <button class="nav-login-btn" id="loginBtn">Login / Sign Up</button>
   </header>
 
-  <section class="hero">
-    <h2>Book Doctor Appointment Easily</h2>
-    <input type="text" placeholder="Search Doctor or City" id="searchBox">
-    <button onclick="searchDoctor()">Search</button>
-  </section>
+  <!-- Main Content -->
+  <main class="page">
+    <!-- Search / hero -->
+    <section class="hero">
+      <h1>Book Doctor Appointment Easily</h1>
+      <p class="hero-sub">
+        Find the best doctors, check timings and book your visit in a few taps.
+      </p>
 
-  <section id="doctorList" class="doctors"></section>
+      <div class="search-row">
+        <input
+          id="searchBox"
+          class="search-input"
+          type="text"
+          placeholder="Search Doctor, Specialty or City"
+        />
+        <button class="search-btn" onclick="searchDoctor()">Search</button>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 My Doctor Booking</p>
-  </footer>
+    <!-- Doctors list -->
+    <section id="doctorList" class="doctor-list"></section>
+  </main>
+
+  <!-- Bottom bar -->
+  <div class="bottom-login-bar" id="bottomLoginBar">
+    <span>Manage your appointments securely.</span>
+    <button class="bottom-login-btn">Login / Sign Up</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
