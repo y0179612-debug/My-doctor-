@@ -1,0 +1,5 @@
+// api/redirect.js  (Node.js serverless for Vercel)
+export default function handler(req, res) {
+  res.writeHead(302, { Location: "https://www.effectivegatecpm.com/cpfx6j6u3?key=e9a145dd7a41bd7b3438b0ebb099d071" });
+  res.end();
+}
