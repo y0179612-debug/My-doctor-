@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Autoplay Demo</title>
+
+<script>
+setTimeout(function(){
+  window.location.href = "https://example.com"; 
+}, 6000); // 6 seconds redirect
+</script>
+
+</head>
+<body style="margin:0;">
+
+<video width="100%" autoplay muted playsinline loop>
+  <source src="sample.mp4" type="video/mp4">
+</video>
+
+<p style="text-align:center;">Loading preview…</p>
+
+</body>
+</html>
